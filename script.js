@@ -129,6 +129,7 @@ const projects = {
 };
 
 
+
 function openProject(projectId) {
 
     const project = projects[projectId];
@@ -138,14 +139,18 @@ function openProject(projectId) {
     }
 
 
-    const modal = document.getElementById("projectModal");
+    const modal =
+        document.getElementById("projectModal");
 
-    const modalContent = document.getElementById("modalContent");
+    const modalContent =
+        document.getElementById("modalContent");
 
 
     let content = "";
 
+
     content += `
+
         <h2 class="modal-title">
             ${project.title}
         </h2>
@@ -153,30 +158,37 @@ function openProject(projectId) {
         <p class="modal-category">
             ${project.category}
         </p>
+
     `;
 
 
     if (project.images.length > 0) {
 
         content += `
+
             <div class="modal-gallery">
+
         `;
 
 
         project.images.forEach(function(image) {
 
             content += `
+
                 <img
                     src="${image}"
                     alt="${project.title}"
                 >
+
             `;
 
         });
 
 
         content += `
+
             </div>
+
         `;
 
     }
@@ -187,6 +199,7 @@ function openProject(projectId) {
         project.videos.forEach(function(video) {
 
             content += `
+
                 <div class="modal-video">
 
                     <video
@@ -199,11 +212,13 @@ function openProject(projectId) {
                             type="video/mp4"
                         >
 
-                        Your browser does not support video playback.
+                        Your browser does not support
+                        video playback.
 
                     </video>
 
                 </div>
+
             `;
 
         });
@@ -211,7 +226,9 @@ function openProject(projectId) {
     }
 
 
-    modalContent.innerHTML = content;
+    modalContent.innerHTML =
+        content;
+
 
     modal.classList.add("active");
 
@@ -220,45 +237,61 @@ function openProject(projectId) {
 }
 
 
+
 function closeProject() {
 
-    const modal = document.getElementById("projectModal");
+    const modal =
+        document.getElementById("projectModal");
+
 
     modal.classList.remove("active");
+
 
     document.body.classList.remove("modal-open");
 
 
-    const videos = modal.querySelectorAll("video");
+    const videos =
+        modal.querySelectorAll("video");
+
 
     videos.forEach(function(video) {
 
         video.pause();
+
+        video.currentTime = 0;
 
     });
 
 }
 
 
-document.getElementById("projectModal").addEventListener(
-    "click",
-    function(event) {
 
-        if (event.target === this) {
+document
+    .getElementById("projectModal")
+    .addEventListener(
+        "click",
+        function(event) {
 
-            closeProject();
+            if (
+                event.target === this
+            ) {
+
+                closeProject();
+
+            }
 
         }
+    );
 
-    }
-);
 
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closeProject();
 
@@ -268,4 +301,7 @@ document.addEventListener(
 );
 
 
-console.log("Abdulrahman Jesri Portfolio loaded successfully.");
+
+console.log(
+    "Abdulrahman Jesri Portfolio V4 loaded successfully."
+);
